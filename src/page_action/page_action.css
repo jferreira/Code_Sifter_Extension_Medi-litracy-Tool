@@ -1,0 +1,222 @@
+#intro {
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 200px;
+	width: 300px;
+	font-family: Helvetica, Ubuntu, Arial, sans-serif;
+}
+
+#signup {
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 450px;
+	width: 300px;
+	font-family: Helvetica, Ubuntu, Arial, sans-serif;
+}
+
+#login {
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 250px;
+	width: 300px;
+	font-family: Helvetica, Ubuntu, Arial, sans-serif;
+}
+
+.formHolder {
+	padding-left: 30px; 
+	padding-right: 30px;
+}
+
+.backNav {
+	position: absolute;
+	top: 5px;
+	left: 10px;
+	z-index: 999;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h3 {
+	font-weight: normal;
+}
+
+span:first-child {
+  margin-top: 0px;
+}
+
+span {
+  cursor: pointer;
+  text-align: center;
+  padding: 1px 3px;
+  width: 100px;
+  margin-top: 1px;
+  background: #cccccc;
+}
+span:hover {
+  background: #aaaaaa;
+}
+#red {
+  border: 1px solid red;
+  color: red;
+}
+#blue {
+  border: 1px solid blue;
+  color: blue;
+}
+#green {
+  border: 1px solid green;
+  color: green;
+}
+#yellow {
+  border: 1px solid yellow;
+  color: yellow;
+}
+
+#icon {
+	background-image: url('chrome-extension://__MSG_@@extension_id__/icons/MS-Logo_v1.svg');
+    background-repeat: no-repeat;
+    background-position: center; 	
+	width: 250px;
+	height: 40px;
+	padding: 0;
+	margin: 0 auto;
+}
+.sturdy {
+	width:100%;
+}
+
+.sturdy td.first {
+  width: 75%;
+}
+.sturdy td.second {
+  width: 25%;
+} 
+.sturdy td.full {
+	width: 100%!important;
+}
+
+hr.style14 { 
+	border: 0; 
+	height: 1px; 
+	background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
+div#auth {
+	position: absolute;
+	bottom: 10px;
+}
+
+div#auth ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+    display: table;
+    table-layout: fixed;
+    width:100%;	
+}
+
+div#auth ul li {
+	display: table-cell;
+    list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+div#auth ul li.left {
+	border-right: 1px solid #8c8b8b;
+}
+
+div#auth ul li a{
+	text-decoration: none;
+	color: #000;
+	display: block;
+	padding: 10px 20px 10px 20px;
+}
+
+div#auth ul li a:hover {
+	color: #6cc18b;
+	text-decoration: none;
+}
+
+/* Toggle switch */
+
+.wrapper {
+  max-width:300px;
+  margin:94px auto 0 auto;
+  text-align:center;
+}
+
+input.toggle {
+	max-height: 0;
+	max-width: 0;
+	opacity: 0;
+}
+
+input.toggle + label {
+	display: inline-block;
+	position: relative;
+	box-shadow: inset 0 0 0px 1px #d5d5d5;
+	text-indent: -5000px;
+	height: 30px;
+	width: 50px;
+	border-radius: 15px;
+}
+
+input.toggle + label:before {
+	content: "";
+	position: absolute;
+	display: block;
+	height: 30px;
+	width: 30px;
+	top: 0;
+	left: 0;
+	border-radius: 15px;
+	background: rgba(108,193,139,0);
+	-moz-transition: .25s ease-in-out;
+	-webkit-transition: .25s ease-in-out;
+	transition: .25s ease-in-out;
+}
+
+input.toggle + label:after {
+	content: "";
+	position: absolute;
+	display: block;
+	height: 30px;
+	width: 30px;
+	top: 0;
+	left: 0px;
+	border-radius: 15px;
+	background: white;
+	box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), 0 2px 4px rgba(0,0,0,.2);
+	-moz-transition: .25s ease-in-out;
+	-webkit-transition: .25s ease-in-out;
+	transition: .25s ease-in-out;
+}
+
+input.toggle:checked + label:before {
+	width: 50px;
+	background: rgba(108,193,139,1);
+}
+
+input.toggle:checked + label:after {
+	left: 20px;
+	box-shadow: inset 0 0 0 1px rgba(108,193,139,1), 0 2px 4px rgba(0,0,0,.2);
+}
+
+/*
+*	Form styling
+*/
+
+.button-large {
+	font-size: 110%;
+}
+
+.button-xlarge {
+	font-size: 125%;
+}

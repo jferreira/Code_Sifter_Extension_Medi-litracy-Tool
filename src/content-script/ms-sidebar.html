@@ -1,0 +1,94 @@
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+</head>
+
+<div id="media-sifter">
+	<div id="media-sifter-floatingbar">
+		<div id="media-sifter-floatingbar-nav">
+			
+			<div id="media-sifter-show-sidebar" class="floating-nav-buttons ms-show-siderbar-off"></div>
+			<div id="media-sifter-highlight" class="floating-nav-buttons ms-highlight-off"></div>
+			<div id="media-sifter-overall-count" class="floating-nav-buttons"><span></span></div>
+			
+		</div>
+	</div>
+
+	<div id="media-sifter-contentbar">
+		<a href="#" class="ms-hide-contentbar"><p>(x)</p></a>
+		
+		<div id="ms-description-content"></div>
+		
+		<div id="media-sifter-edit-form">
+			<div><b>Add word to filter</b><br />
+				<ol>
+					<li>Highlight a word</li>
+					<li>Select the filter database you want to add the word to</li>
+					<li>Add a short note on how you think the word is being used in this context</li>
+				</ol>
+			</div>	
+		
+			<form>
+				<b>Term database to add to:</b><br /> <select id="ms-filter-databases" disabled></select><br />
+				
+				<b>Term/word:</b><br /> <input type="text" name="ms-term" value="" disabled /><br />
+				
+				<b>Context:</b><br />
+				<textarea name="ms-paragraph" disabled style="width:80%; height: 100px;"></textarea><br />
+				
+				<b>Note:</b><br />
+				<textarea name="ms-note" disabled style="width:80%; height: 100px;"></textarea><br >
+				
+				<input type="button" name="submit" value="Add term" id="ms-add-term-button" disabled />
+			</form>
+		</div>		
+		
+	</div>
+
+	<div id="media-sifter-sidebar">
+		<!--
+		<div class="ms-divider">&nbsp;</div>
+		<div class="ms-filter-all" id="ms-filter-all" data-filter="all">
+			<h4>[ on | off ]</h4>
+		</div>
+				-->
+		<div><h4 class="ms-title">Toggle all</h4></div>
+		<input type="checkbox" name="allfilters" class="ms-all-filters-toggle" id="allfilters">
+		<label for="allfilters"></label>		
+		
+		<div class="ms-divider">&nbsp;</div>
+
+		
+		<div><h4 class="ms-title">Terms</h4></div>
+		
+		<div class="ms-filter ms-filter-labeling" id="ms-filter-labeling" data-filter="labeling"><p>Labeling</p><span class="ms-filter-count">0</span></div>
+		<div class="ms-filter ms-filter-hedging" id="ms-filter-hedging" data-filter="hedging"><p>Hedging</p><span class="ms-filter-count">0</span></div>
+		<div class="ms-filter ms-filter-political" id="ms-filter-political" data-filter="political"><p>Political</p><span class="ms-filter-count">0</span></div>
+		
+		<!--
+		<div class="ms-filter ms-filter-suggestive" id="ms-filter-suggestive" data-filter="suggestive"><p>Suggestive</div>
+		<div class="ms-filter ms-filter-inflammatory" id="ms-filter-inflammatory" data-filter="inflammatory"><p>Inflammatory</p></div>
+		<div class="ms-filter ms-filter-charged" id="ms-filter-charged" data-filter="charged"><p>Charged</p></div>
+		<div class="ms-filter ms-filter-attacking" id="ms-filter-attacking" data-filter="attacking"><p>Attacking</p></div>
+		<div class="ms-filter ms-filter-protective" id="ms-filter-protective" data-filter="protective"><p>Protective</p></div>
+		<div class="ms-filter ms-filter-fear-generating" id="ms-filter-feargenerating" data-filter="fear-generating"><p>Fear Generating</div>
+		<div class="ms-filter ms-filter-opinion" id="ms-filter-opinion" data-filter="opinion"><p>Opinion</p></div>
+		<div class="ms-filter ms-filter-echoing" id="ms-filter-echoing" data-filter="echoing"><p>Echoing</p></div>
+		-->
+
+		<div class="ms-divider">&nbsp;</div>
+		<div><h4 class="ms-title">Your terms</h4></div>
+		
+		<!--
+		<div class="ms-divider">&nbsp;</div>
+
+		<div><h4 class="ms-title">Fact</h4></div>
+
+		<div class="ms-filter ms-filter-time" id="ms-filter-time" data-filter="time"><p>Time</p></div>
+		<div class="ms-filter ms-filter-place" id="ms-filter-place" data-filter="place"><p>Place</p></div>
+		<div class="ms-filter ms-filter-event" id="ms-filter-event" data-filter="event"><p>Event</p></div>
+		
+		-->
+		
+		
+	</div>
+</div>

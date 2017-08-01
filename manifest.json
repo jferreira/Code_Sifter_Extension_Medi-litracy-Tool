@@ -1,0 +1,77 @@
+{
+  "name": "Media Sifter",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Media Sifter - Chrome Extention Prototype v. 0.0.1",
+  "homepage_url": "http://www.mediasifter.co",
+
+  "icons": {
+    "16": "icons/ms120.png",
+    "48": "icons/ms120.png",
+    "128": "icons/ms120.png"
+
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": ["src/js/pouchdb-5.3.1.js", "src/js/pouchdb.authentication.min.js", "src/bg/background.js"],
+	"persistent": true
+
+  },
+  "options_page": "src/options_custom/index.html",
+  "browser_action": {
+	  "default_icon": {                  
+		"19": "icons/ms120.png",        
+		"38": "icons/ms120.png"            
+	  },
+	  "default_title": "Media Sifter",
+	  "default_popup": "src/page_action/page_action.html"
+
+  },
+  "permissions": [
+	"storage",
+	"unlimitedStorage",
+    "clipboardRead",
+    "clipboardWrite",
+    "contentSettings",
+	"webNavigation",
+    "cookies",
+    "history",
+    "idle",
+    "notifications",
+    "tabs",
+    "geolocation",
+    "https://*/*",
+    "http://*/*",
+    "tabs"	
+  ],
+
+  "omnibox": {
+    "keyword": "Media Sifter"
+  },
+
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [
+        "src/content-script/content-script.css"
+      ]
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "src/js/jquery-2.2.1.min.js", "src/js/jquery.highlight.js", "src/content-script/content-script2.js"
+      ]
+    }
+  ],
+  
+  "web_accessible_resources": [
+	"src/content-script/ms-sidebar.html",
+	"icons/*",
+	"src/db/db.json"
+   ]
+}

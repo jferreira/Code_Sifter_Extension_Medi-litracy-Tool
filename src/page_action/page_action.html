@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<link rel="stylesheet" href="page_action.css" />
+		<script src="jquery-2.2.1.min.js"></script>
+		<script src="page_action.js"></script>
+	</head>
+
+	<body>
+	
+	<div id="intro">
+		<div id="icon">&nbsp;</div>
+		
+		<table class="sturdy">
+		  <tr>
+			<td class="full" colspan="2"><hr class="style14"></td>
+		  </tr>	
+		  <tr>
+			<td class="first">Turn on simple text</td>
+			<td class="second">
+				<input type="checkbox" name="option1" class="toggle" id="option1">
+				<label for="option1"></label>		
+			</td>
+		  </tr>
+		  <tr>
+			<td class="full" colspan="2"><hr class="style14"></td>
+		  </tr>
+		  <tr>
+			<td class="first">Underline highlighted text by default</td>
+			<td class="second">
+				<input type="checkbox" name="option2" class="toggle" id="option2" checked>
+				<label for="option2"></label>	
+			</td>
+		  </tr>	  
+		</table>	
+		
+		<hr class="style14">
+		
+		<div id="auth">
+			<ul>
+				<li class="left"><a href="#" id="aSignUp">Sign up</a></li>
+				<li><a href="#" id="aLogin">Login</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="signup" style="display:none;">
+		<div id="icon">&nbsp;</div>
+		<div class="backNav"><a href="#" id="back1"><img src="Arrow-left_64x64_v1.svg" width="40" height="40" /></a></div>
+		<hr class="style14">
+		
+		<div class="formHolder" id="accountCreateForm">
+			<h2 style="text-align: center;">Create a free account</h2>
+			
+			<form class="pure-form">
+				<fieldset class="pure-group">
+					<input type="text" id="aname" class="pure-input-1" placeholder="Name" required>
+					<input type="text" id="aprofession" class="pure-input-1" placeholder="Profession">
+					<input type="text" id="abirth" class="pure-input-1" placeholder="Date of birth">
+					
+					<select id="agender">
+						<option value="0">Gender</option>
+						<option value="female">Female</option>
+						<option value="male">Male</option>
+					</select>				
+				</fieldset>		
+			
+			
+				<fieldset class="pure-group">
+					<input type="text" id="ausername" class="pure-input-1" placeholder="Username" required>
+					<input type="text" id="apassword" class="pure-input-1" placeholder="Password" required>
+					<input type="email" id="aemail" class="pure-input-1" placeholder="Email" required>
+				</fieldset>
+
+				<button type="button" class="pure-button button-xlarge pure-input-1 pure-button-primary" id="submitAccount">Create account</button>
+			</form>		
+		</div>
+		<div class="formHolder" id="accountCreated" style="display:none;">
+			<h2 style="text-align: center;">Account successfully created.</h2>		
+		</div>		
+	</div>
+	
+	<div id="login" style="display:none;">
+		<div id="icon">&nbsp;</div>
+		<div class="backNav"><a href="#" id="back2"><img src="Arrow-left_64x64_v1.svg" width="40" height="40" /></a></div>
+		<hr class="style14">
+		<div class="formHolder" id="loginform">
+			<h2 style="text-align: center;">Login to your account</h2>
+			
+			<form class="pure-form">
+				<fieldset class="pure-group">
+					<input type="text" id="username" class="pure-input-1" placeholder="Username" required>
+					<input type="text" id="password" class="pure-input-1" placeholder="Password" required>
+				</fieldset>
+				
+				<!--<button type="button" class="pure-button button-xlarge pure-input-1-2 pure-button-primary" id="checkStatus">Check status</button>-->
+				<button type="button" class="pure-button button-xlarge pure-input-1 pure-button-primary" id="submitLogin">Login</button>
+			</form>		
+		</div>
+		<div class="formHolder" id="loggedin" style="display:none;">
+			<h2 style="text-align: center;">Successfully logged in.</h2>		
+		</div>
+	</div>	
+	</body>
+</html>
