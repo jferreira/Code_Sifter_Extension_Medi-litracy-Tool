@@ -303,7 +303,7 @@ $('body').on('click', '.ms-link', function(event){
 	$("#media-sifter-contentbar #ms-description-content").append("<div class='term-source'><b>Source:</b><br />"+source+"<br /><a href='"+sourceUrl+"'>Source</a></div>");
 });
 
-$("body").on('click', '#media-sifter-highlight', function(event) {
+$('body').on('click', '#media-sifter-highlight', function(event) {
 	//$("body p, body span, body h1, body h2, body h3, body h4, body h5").toggleClass("ms-select-text");
 	
 	if($("#media-sifter-contentbar").is(":hidden")) {
@@ -462,6 +462,6 @@ $("body").on('click', '#ms-add-term-button', function(event) {
 	
 	console.log(term, paragraph, note);
 	chrome.runtime.sendMessage({newTerm: doc}, function(response) {
-		console.log(response);
+		console.log("Response of Add-term:"+response);
 	});		
 });

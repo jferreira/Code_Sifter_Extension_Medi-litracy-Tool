@@ -38,14 +38,14 @@ Store.prototype = {
 		return low;
 	},	
 	onDeleted: function(id) {
-		var index = binarySearch(this.terms, id);
+		var index = this.binarySearch(this.terms, id);
 		var doc = this.terms[index];
 		if (doc && doc._id === id) {
 			this.terms.splice(index, 1);
 		}		
 	},
 	onUpdatedOrInserted: function(newDoc) {
-		var index = binarySearch(this.terms, newDoc._id);
+		var index = this.binarySearch(this.terms, newDoc._id);
 		var doc = this.terms[index];
 		if (doc && doc._id === newDoc._id) { // update
 			this.terms[index] = newDoc;
@@ -60,15 +60,16 @@ Store.prototype = {
 		});
 	},	
 	reactToChanges: function() {
+		var self = this;
 		this.communicate("Launched react!");
 		
 		this.db.changes({live: true, since: 'now', include_docs: true, limit: 500}).on('change', function (change) {
 		if (change.deleted) {
 			// change.id holds the deleted id
-			this.onDeleted(change.id);
+			self.onDeleted(change.id);
 		} else { // updated/inserted
 			// change.doc holds the new doc
-			this.onUpdatedOrInserted(change.doc);
+			self.onUpdatedOrInserted(change.doc);
 		}
 		}).on('error', console.log.bind(console));
 	},
@@ -88,7 +89,10 @@ Store.prototype = {
 		console.log("error syncing");
 	},
 	communicate: function(string) {
-		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+		chrome.tabs.query({active: true, windowType:"normal", currentWindow: true}, function(tabs){
+			// This breaks sometimes. Cannot read id of undefined (tabs[0]) - unsure why
+			// console.log(tabs);
+			// http://stackoverflow.com/questions/28786723/why-doesnt-chrome-tabs-query-return-the-tabs-url-when-called-using-requirejs
 			chrome.tabs.sendMessage(tabs[0].id, {info: string}, function(response) {});  
 		});		
 	},
@@ -96,24 +100,25 @@ Store.prototype = {
 	  return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
 	}, 
 	insertTerm: function(term,paragraph,description,filter,title,url) {
+		var self = this;
 		var userPrefix = '',
 			user;
 		
 		this.externalDb.getSession(function (err, response) {
 		  if (err) {
-			// network error
+			console.log("Error trying to getSession: insertTerm()"+err);
 		  } else if (!response.userCtx.name) {
 			console.log("No one is logged in. Log in to do changes to a database.");
 		  } else {
 			user = response.userCtx.name.toLowerCase();
-			userPrefix = createHash(user);
+			userPrefix = self.createHash(user);
 			//var eId = new Date().toISOString();
 			
 			// Need to figure out how we can add multiple examples to the same doc
 			// right now example will be overwritten 
 			
 			var doc = {
-				//_id: userPrefix + '_' + term,
+				_id: userPrefix + '_' + term,
 				term: term,
 				example: paragraph,
 				exampleTitle: title,
@@ -122,7 +127,12 @@ Store.prototype = {
 				filter: filter,
 				source: user
 			}
-			this.db.put(doc).catch(console.log.bind(console));
+			self.db.put(doc).then(function (response) {console.log("Success local DB", response)
+			  }).then(function (err) {
+				  if(err){
+					console.log("Error local DB", err);
+					}
+			  });
 		  }
 		});			
 	},
@@ -246,6 +256,7 @@ chrome.runtime.onMessage.addListener(
 	function (request, sender, sendResponse) {
 		//console.log("chrome.runtime.onMessage", request);
 		
+		store = new Store();
 		if (request.n || request.n == 0) {
 			var s;
 			//console.log(request.n);
@@ -304,7 +315,7 @@ chrome.runtime.onMessage.addListener(
 			*/
 			
 			store.loginDB2(request.login.username, request.login.password);
-
+			console.log('Loging in');
 		} else if(request.accountStatus) {
 			store.getDBsession();
 			sendResponse("Recived account status check");
@@ -332,6 +343,7 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
 // Fetch CouchDB here, and pass on to content script? 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 	if (changeInfo.status == 'complete') {
+		store = new Store();
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 			// This breaks sometimes. Cannot read id of undefined (tabs[0]) - unsure why
 			// console.log(tabs);

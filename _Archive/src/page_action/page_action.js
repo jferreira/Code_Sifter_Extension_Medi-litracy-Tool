@@ -57,11 +57,11 @@ function validateLogin() {
 		username: username,
 		password: password		
 	}
-	/*
+	
 	chrome.runtime.sendMessage({login : accountInformation}, function(response) {
 		console.log(response);
 	});		
-	*/
+	
 	return false;
 }	
 
