@@ -1,4 +1,4 @@
-# Code_Sifter_Extension_Medi-litracy-Tool
+# Code_Sifter_Extension_Media-litracy-Tool
 
 Links to other streams of work:
 
